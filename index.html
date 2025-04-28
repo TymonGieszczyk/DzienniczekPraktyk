@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dziennik praktyki zawodowej</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Dziennik praktyki zawodowej</h1>
+        
+        <div class="tabs">
+            <button id="tab-metryczka" class="tab">Metryczka</button>
+            <button id="tab-dziennik" class="tab active">Dziennik zajęć</button>
+            <button id="tab-podsumowanie" class="tab">Podsumowanie</button>
+        </div>
+
+        <!-- Metryczka -->
+<div id="metryczka-view" class="content-box" style="display: none;">
+    <div id="form-view">
+        <h2>Wprowadź dane ucznia i praktyki</h2>
+        <form id="student-form" class="enhanced-form">
+            <div class="student-info-container">
+                <div class="form-section">
+                    <h3 class="section-title">Dane osobowe</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="imie">Imię:</label>
+                            <input type="text" id="imie" name="imie" placeholder="Wprowadź imię" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="nazwisko">Nazwisko:</label>
+                            <input type="text" id="nazwisko" name="nazwisko" placeholder="Wprowadź nazwisko" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="klasa">Klasa:</label>
+                            <input type="text" id="klasa" name="klasa" placeholder="np. 4i" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="rokSzkolny">Rok szkolny:</label>
+                            <input type="text" id="rokSzkolny" name="rokSzkolny" placeholder="np. 2024/25" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3 class="section-title">Miejsce praktyki</h3>
+                    <div class="form-group center">
+                        <label for="odbytejW">Odbytej w:</label>
+                        <input type="text" id="odbytejW" name="odbytejW" placeholder="Nazwa firmy/instytucji" required class="full-width">
+                    </div>
+                </div>
+
+                <fieldset class="enhanced-fieldset">
+                    <legend>Czas trwania praktyki</legend>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="dataRozpoczecia" class="date-label">Data rozpoczęcia:</label>
+                            <div class="date-input-container">
+                                <input type="date" id="dataRozpoczecia" name="dataRozpoczecia" placeholder="dd.mm.rrrr" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="dataZakonczenia" class="date-label">Data zakończenia:</label>
+                            <div class="date-input-container">
+                                <input type="date" id="dataZakonczenia" name="dataZakonczenia" placeholder="dd.mm.rrrr" required>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <div class="form-actions">
+                    <button type="submit" id="submit-btn" class="primary-btn">Zatwierdź dane</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div id="summary-view" style="display: none;">
+        <h2>Dane ucznia</h2>
+        <div class="summary-content">
+            <div class="summary-card">
+                <p><span class="label">Imię i nazwisko:</span> <span id="summary-name" class="value"></span></p>
+                <p>
+                    <span class="label">Klasa:</span> <span id="summary-class" class="value"></span>
+                    <span class="label" style="margin-left: 20px;">rok szkolny:</span> <span id="summary-year" class="value"></span>
+                </p>
+                <p><span class="label">Odbytej w:</span> <span id="summary-place" class="value"></span></p>
+                <p><span class="label">W terminie: od</span> <span id="summary-start-date" class="value"></span> <span class="label">do</span> <span id="summary-end-date" class="value"></span></p>
+            </div>
+        </div>
+        <div class="form-actions">
+            <button id="edit-btn" class="secondary-btn">Edytuj dane</button>
+        </div>
+    </div>
+</div>
+
+
+
+        <!-- Dziennik zajęć -->
+        <div id="dziennik-view" class="content-box">
+            <h2>Wprowadź nowe zajęcia</h2>
+            
+            <form id="zajecia-form">
+                <fieldset>
+                    <legend>Informacja o zajęciach</legend>
+                    <div class="form-group center">
+                        <label for="dataZajec">Wybierz datę zajęć:</label>
+                        <input type="date" id="dataZajec" name="dataZajec" value="05.05.2025" required>
+                    </div>
+                    
+                    <div class="form-group center">
+                        <label for="dzial">Wybierz dział:</label>
+                        <select id="dzial" name="dzial" required>
+                            <option value="">-- Wybierz dział --</option>
+                            <option value="Moduł wstępny">Moduł wstępny</option>
+                            <option value="Montaż, naprawa, konserwacja i obsługa sprzętu komputerowego" selected>Montaż, naprawa, konserwacja i obsługa sprzętu komputerowego</option>
+                            <option value="Systemy informatyczne">Systemy informatyczne</option>
+                            <option value="Tworzenie aplikacji internetowych">Tworzenie aplikacji internetowych</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group center">
+                        <label for="temat">Wybierz temat:</label>
+                        <select id="temat" name="temat" required>
+                            <option value="Montaż sprzętu komputerowego" selected>Montaż sprzętu komputerowego</option>
+                            <option value="Naprawa sprzętu komputerowego">Naprawa sprzętu komputerowego</option>
+                            <option value="Konserwacja i obsługa sprzętu komputerowego">Konserwacja i obsługa sprzętu komputerowego</option>
+                        </select>
+                    </div>
+                </fieldset>
+                
+                <fieldset>
+                    <legend>Opiekun</legend>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="opiekun1" name="opiekun" value="Jerzy Kot">
+                            <label for="opiekun1">Jerzy Kot</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="opiekun2" name="opiekun" value="Maria Nowak">
+                            <label for="opiekun2">Maria Nowak</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="opiekun3" name="opiekun" value="Konstanty Kowal" checked>
+                            <label for="opiekun3">Konstanty Kowal</label>
+                        </div>
+                    </div>
+                </fieldset>
+                
+                <fieldset>
+                    <legend>Realizacja materiału</legend>
+                    <div class="form-group">
+                        <label for="sprawozdanie">Sprawozdanie:</label>
+                        <textarea id="sprawozdanie" name="sprawozdanie" rows="5">Dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</textarea>
+                    </div>
+                    
+                    <div class="form-group checkbox-group">
+                        <label for="zrealizowano">Zrealizowano:</label>
+                        <input type="checkbox" id="zrealizowano" name="zrealizowano" checked>
+                    </div>
+                    
+                    <div class="hours-mastery-container">
+                        <div class="form-group hours-group">
+                            <label for="ileGodzin">Ile godzin:</label>
+                            <input type="number" id="ileGodzin" name="ileGodzin" min="1" max="8" value="5">
+                        </div>
+                        
+                        <div class="form-group slider-group">
+                            <label for="stopienOpanowania">Stopień opanowania materiału:</label>
+                            <div class="slider-container">
+                                <span>1</span>
+                                <input type="range" id="stopienOpanowania" name="stopienOpanowania" min="1" max="6" value="4">
+                                <span>6</span>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                
+                <div class="form-actions buttons-row">
+                    <button type="button" id="wyczysc-btn" class="red-btn">wyczyść</button>
+                    <button type="submit" id="dodaj-btn" class="green-btn">dodaj</button>
+                </div>
+            </form>
+            
+            <div class="hours-summary">
+                <p>Pozostało do zrealizowania: <span id="pozostalo-godzin" class="red-text">137</span> godz.</p>
+            </div>
+            
+            <hr>
+            
+            <h2>Realizacja tematów</h2>
+            
+            <div id="tematy-lista">
+                <!-- Moduł wstępny -->
+                <div class="modul">
+                    <h3>Moduł wstępny</h3>
+                    <div class="temat-row">
+                        <div class="temat-nazwa">Czynności wstępne i szkolenia, struktura i organizacja pracy informatyków</div>
+                        <div class="temat-godziny"><span class="green-text">3</span> godz.</div>
+                    </div>
+                    <div class="temat-row">
+                        <div class="temat-nazwa">Struktura organizacyjna przedsiębiorstwa i elementy przetwarzania informacji</div>
+                        <div class="temat-godziny"><span class="red-text">0</span> godz.</div>
+                    </div>
+                    <div class="temat-row">
+                        <div class="temat-nazwa">Konfiguracja sprzętu komputerowego i oprogramowania</div>
+                        <div class="temat-godziny"><span class="red-text">0</span> godz.</div>
+                    </div>
+                </div>
+                
+                <!-- Montaż, naprawa, konserwacja -->
+                <div class="modul">
+                    <h3>Montaż, naprawa, konserwacja i obsługa sprzętu komputerowego</h3>
+                    <div class="temat-row">
+                        <div class="temat-nazwa">Montaż sprzętu komputerowego</div>
+                        <div class="temat-godziny"><span class="green-text">5</span> godz.</div>
+                    </div>
+                    <div class="temat-row">
+                        <div class="temat-nazwa">Naprawa sprzętu komputerowego</div>
+                        <div class="temat-godziny"><span class="red-text">0</span> godz.</div>
+                    </div>
+                    <div class="temat-row">
+                        <div class="temat-nazwa">Konserwacja i obsługa sprzętu komputerowego</div>
+                        <div class="temat-godziny"><span class="red-text">0</span> godz.</div>
+                    </div>
+                </div>
+                
+                <!-- Systemy informatyczne -->
+                <div class="modul">
+                    <h3>Systemy informatyczne</h3>
+                    <div class="temat-row">
+                        <div class="temat-nazwa">Zasady administrowania systemami informatycznymi i archiwizowania danych</div>
+                        <div class="temat-godziny"><span class="red-text">0</span> godz.</div>
+                    </div>
+                    <div class="temat-row">
+                        <div class="temat-nazwa">Dokumentacja technologiczna przetwarzania informacji</div>
+                        <div class="temat-godziny"><span class="red-text">0</span> godz.</div>
+                    </div>
+                    <div class="temat-row">
+                        <div class="temat-nazwa">Biblioteki oprogramowania i zbiorów danych</div>
+                        <div class="temat-godziny"><span class="red-text">0</span> godz.</div>
+                    </div>
+                    <div class="temat-row">
+                        <div class="temat-nazwa">Zapoznanie z programami do administracji lokalnymi sieciami komputerowymi</div>
+                        <div class="temat-godziny"><span class="red-text">0</span> godz.</div>
+                    </div>
+                    <div class="temat-row">
+                        <div class="temat-nazwa">Obsługa programów używanych w przedsiębiorstwie</div>
+                        <div class="temat-godziny"><span class="red-text">0</span> godz.</div>
+                    </div>
+                    <div class="temat-row">
+                        <div class="temat-nazwa">Komputerowe wspomaganie procesów projektowania</div>
+                        <div class="temat-godziny"><span class="red-text">0</span> godz.</div>
+                    </div>
+                    <div class="temat-row">
+                        <div class="temat-nazwa">Organizacja, zbieranie i kontrola danych, przetwarzanie i wykorzystywanie wyników</div>
+                        <div class="temat-godziny"><span class="red-text">0</span> godz.</div>
+                    </div>
+                    <div class="temat-row">
+                        <div class="temat-nazwa">Elementy procesów projektowania, programowania i uruchamiania programów komputerowych</div>
+                        <div class="temat-godziny"><span class="red-text">0</span> godz.</div>
+                    </div>
+                    <div class="temat-row">
+                        <div class="temat-nazwa">Ochrona danych i procesów przetwarzania</div>
+                        <div class="temat-godziny"><span class="red-text">0</span> godz.</div>
+                    </div>
+                </div>
+                
+                <!-- Tworzenie aplikacji internetowych -->
+                <div class="modul">
+                    <h3>Tworzenie aplikacji internetowych</h3>
+                    <div class="temat-row">
+                        <div class="temat-nazwa">Konfiguracja serwerów i przeglądarek pod obsługą aplikacji internetowych</div>
+                        <div class="temat-godziny"><span class="red-text">0</span> godz.</div>
+                    </div>
+                    <div class="temat-row">
+                        <div class="temat-nazwa">Struktura witryny internetowej - HTML</div>
+                        <div class="temat-godziny"><span class="red-text">0</span> godz.</div>
+                    </div>
+                    <div class="temat-row">
+                        <div class="temat-nazwa">Stylizacja elementów witryny - CSS</div>
+                        <div class="temat-godziny"><span class="red-text">0</span> godz.</div>
+                    </div>
+                    <div class="temat-row">
+                        <div class="temat-nazwa">Programowanie aplikacji internetowych - JS, PHP</div>
+                        <div class="temat-godziny"><span class="red-text">0</span> godz.</div>
+                    </div>
+                    <div class="temat-row">
+                        <div class="temat-nazwa">Testowanie aplikacji internetowych</div>
+                        <div class="temat-godziny"><span class="red-text">0</span> godz.</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="zrealizowane-box">
+                <h3>Zrealizowane tematy</h3>
+                <div id="zrealizowane-tematy">
+                    <div class="zrealizowany-temat">
+                        <p><span class="label">dział:</span> <span class="value">Montaż, naprawa, konserwacja i obsługa sprzętu komputerowego</span></p>
+                        <p><span class="label">temat:</span> <span class="value">Montaż sprzętu komputerowego</span></p>
+                        <p><span class="label">opiekun:</span> <span class="value">Konstanty Kowal</span>, <span class="label">data realizacji:</span> <span class="value">2025-05-05</span>, <span class="label">ilość godzin:</span> <span class="value">5</span>, <span class="label">ocena:</span> <span class="value">4</span></p>
+                        <p><span class="label">sprawozdanie:</span> <span class="value">Dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</span></p>
+                    </div>
+                    <div class="zrealizowany-temat">
+                        <p><span class="label">dział:</span> <span class="value">Moduł wstępny</span></p>
+                        <p><span class="label">temat:</span> <span class="value">Czynności wstępne i szkolenia, struktura i organizacja pracy informatyków</span></p>
+                        <p><span class="label">opiekun:</span> <span class="value">Maria Nowak</span>, <span class="label">data realizacji:</span> <span class="value">2025-05-05</span>, <span class="label">ilość godzin:</span> <span class="value">3</span>, <span class="label">ocena:</span> <span class="value">6</span></p>
+                        <p><span class="label">sprawozdanie:</span> <span class="value">"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="podsumowanie-view" class="content-box" style="display: none;">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda autem nulla doloribus dolor sed. Non reiciendis aspernatur possimus reprehenderit, sint itaque autem hic porro eum dolores maxime delectus cum officiis officia quidem totam eaque. Tempore quaerat delectus perspiciatis beatae temporibus reiciendis earum animi nesciunt voluptas, sunt consectetur non rerum eveniet optio nemo ipsa rem enim.</p>
+            
+            <p>Cum dolorum int aspernatur laudantium exercitationem rerum dolorem ratione necessitatibus delectus ipsum nisi. Alias tenetur, esse necessitatibus distinctio accusamus aperiam eaque nobis vitae id maxime enim repellat veniam.</p>
+            
+            <p>Eveniet porro soluta cupiditate animi cumque est quas dolorem atque facilis incidunt nihil, atemptum modestiae esse quaerat.</p>
+            
+            <table class="summary-table">
+                <thead>
+                    <tr>
+                        <th>Nazwa modułu</th>
+                        <th>Ilość godzin zrealizowanych</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Moduł wstępny</td>
+                        <td class="hours-cell">3</td>
+                    </tr>
+                    <tr>
+                        <td>Montaż, naprawa, konserwacja i obsługa sprzętu komputerowego</td>
+                        <td class="hours-cell">5</td>
+                    </tr>
+                    <tr>
+                        <td>Systemy informatyczne</td>
+                        <td class="hours-cell">0</td>
+                    </tr>
+                    <tr>
+                        <td>Tworzenie aplikacji internetowych</td>
+                        <td class="hours-cell">0</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td class="total-label">RAZEM:</td>
+                        <td class="total-hours">8</td>
+                    </tr>
+                </tfoot>
+            </table>
+            
+            <p class="remaining-hours">Pozostało do zrealizowania: <span class="red-text">132</span> godz.</p>
+            
+            <p class="proposed-grade">Proponowana ocena: (5) <span class="green-text">bardzo dobry</span></p>
+        </div>
+
+        <footer>
+            <p>© Tymon Gieszczyk 4i</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,748 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+  }
+  
+  body {
+    background-color: #121212;
+    color: #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    line-height: 1.6;
+  }
+  
+  .container {
+    width: 100%;
+    max-width: 900px;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    background-color: #1a1a1a;
+  }
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #fff;
+    font-size: 32px;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 500;
+  }
+  
+  h3 {
+    color: #fff;
+    font-size: 20px;
+    margin: 20px 0 15px;
+    font-weight: 500;
+  }
+  
+  .tabs {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+  
+  .tab {
+    padding: 12px 24px;
+    background-color: transparent;
+    color: #ccc;
+    border: 1px solid #444;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 500;
+    font-size: 16px;
+  }
+  
+  .tab:hover {
+    background-color: rgba(0, 128, 0, 0.1);
+    border-color: #2a6;
+  }
+  
+  .tab.active {
+    background-color: rgba(0, 128, 0, 0.2);
+    border-color: #2a6;
+    color: #2a6;
+    box-shadow: 0 2px 8px rgba(42, 102, 6, 0.2);
+  }
+  
+  .content-box {
+    border: 1px solid #2a6;
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 30px;
+    background-color: #1e1e1e;
+    box-shadow: 0 2px 10px rgba(42, 102, 6, 0.1);
+  }
+  
+  /* Poprawki dla formularza Metryczka */
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    max-width: 100%;
+  }
+  
+  .form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .form-group label {
+    width: 120px;
+    text-align: right;
+    margin-right: 15px;
+    color: #bbb;
+    font-weight: 500;
+  }
+  
+  .form-group input[type="text"] {
+    flex: 1;
+    min-width: 200px;
+    max-width: 100%;
+  }
+  
+  .form-section {
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #252525;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    width: 100%;
+  }
+  
+  .student-info-container {
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  
+  .enhanced-form {
+    background-color: #222;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    width: 100%;
+  }
+  
+  /* Poprawka dla pola "Odbytej w" */
+  .form-group.center {
+    justify-content: flex-start;
+    margin: 25px 0;
+    width: 100%;
+  }
+  
+  .form-group.center label {
+    width: 120px;
+    text-align: right;
+  }
+  
+  .form-group.center input {
+    flex: 1;
+    min-width: 200px;
+    max-width: 100%;
+  }
+  
+  .checkbox-group {
+    justify-content: flex-end;
+    margin-right: 100px;
+  }
+  
+  .radio-group {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    background-color: #252525;
+    border-radius: 8px;
+  }
+  
+  .radio-item {
+    display: flex;
+    align-items: center;
+  }
+  
+  .radio-item input[type="radio"] {
+    margin-right: 8px;
+    accent-color: #2a6;
+  }
+  
+  .hours-mastery-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .hours-group {
+    justify-content: flex-start;
+    margin-left: 50px;
+  }
+  
+  .hours-group input {
+    width: 60px;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .slider-group {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 50px;
+  }
+  
+  .slider-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 300px;
+    margin-top: 15px;
+  }
+  
+  .slider-container span {
+    margin: 0 15px;
+    font-weight: bold;
+  }
+  
+  input[type="text"],
+  input[type="number"],
+  select,
+  textarea {
+    background-color: #252525;
+    border: 1px solid #444;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 6px;
+    transition: all 0.3s;
+  }
+  
+  input[type="text"]:focus,
+  input[type="number"]:focus,
+  select:focus,
+  textarea:focus {
+    border-color: #2a6;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(42, 102, 6, 0.2);
+  }
+  
+  input[type="text"],
+  select {
+    width: 250px;
+  }
+  
+  input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #2a6;
+  }
+  
+  textarea {
+    width: 100%;
+    resize: vertical;
+    min-height: 120px;
+    font-family: "Segoe UI", Arial, sans-serif;
+    line-height: 1.5;
+  }
+  
+  input[type="range"] {
+    width: 250px;
+    accent-color: #2a6;
+    height: 6px;
+  }
+  
+  .calendar-icon {
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 18px;
+  }
+  
+  fieldset {
+    border: 1px solid #444;
+    border-radius: 10px;
+    padding: 25px;
+    margin: 30px 0;
+    background-color: #222;
+  }
+  
+  legend {
+    padding: 0 15px;
+    color: #fa2;
+    font-weight: 500;
+    font-size: 18px;
+  }
+  
+  .date-label {
+    color: #2ad;
+  }
+  
+  .form-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    width: 100%;
+  }
+  
+  .buttons-row {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin: 30px auto;
+  }
+  
+  button {
+    background-color: #2a6;
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 14px;
+  }
+  
+  button:hover {
+    background-color: #3b7;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .red-btn {
+    background-color: #a33;
+  }
+  
+  .red-btn:hover {
+    background-color: #b44;
+  }
+  
+  .green-btn {
+    background-color: #2a6;
+  }
+  
+  .green-btn:hover {
+    background-color: #3b7;
+  }
+  
+  .summary-content {
+    text-align: center;
+    line-height: 2;
+    background-color: #252525;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+  }
+  
+  .label {
+    color: #999;
+  }
+  
+  .value {
+    color: #2a6;
+    font-weight: bold;
+    margin-left: 5px;
+  }
+  
+  .hours-summary {
+    text-align: center;
+    margin: 25px 0;
+    font-size: 20px;
+    background-color: #252525;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .hours-summary p {
+    margin-bottom: 15px;
+  }
+  
+  .reset-hours-btn {
+    margin-top: 10px;
+    background-color: #a33;
+    padding: 8px 15px;
+    font-size: 14px;
+  }
+  
+  .reset-hours-btn:hover {
+    background-color: #c44;
+  }
+  
+  .red-text {
+    color: #f55;
+    font-weight: bold;
+  }
+  
+  .green-text {
+    color: #2a6;
+    font-weight: bold;
+  }
+  
+  hr {
+    border: none;
+    border-top: 1px solid #444;
+    margin: 35px 0;
+  }
+  
+  .modul {
+    margin-bottom: 35px;
+    background-color: #252525;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .temat-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #333;
+  }
+  
+  .temat-row:last-child {
+    border-bottom: none;
+  }
+  
+  .temat-nazwa {
+    flex: 1;
+  }
+  
+  .temat-godziny {
+    width: 80px;
+    text-align: right;
+    font-weight: 500;
+  }
+  
+  .zrealizowane-box {
+    border: 1px solid #2a6;
+    border-radius: 10px;
+    padding: 25px;
+    margin-top: 35px;
+    background-color: #222;
+  }
+  
+  .zrealizowany-temat {
+    position: relative;
+    background-color: #252525;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    border-left: 4px solid #2a6;
+  }
+  
+  .zrealizowany-temat:last-child {
+    margin-bottom: 0;
+  }
+  
+  .zrealizowany-temat p {
+    margin-bottom: 10px;
+  }
+  
+  .delete-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #a33;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    font-size: 16px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    padding: 0;
+  }
+  
+  .delete-btn:hover {
+    background-color: #d44;
+    transform: scale(1.1);
+  }
+  
+  footer {
+    text-align: center;
+    margin-top: 50px;
+    color: #666;
+    font-size: 14px;
+  }
+  
+  /* Styles for Summary Table */
+  .summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 35px 0;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .summary-table th,
+  .summary-table td {
+    border: 1px solid #444;
+    padding: 15px;
+    text-align: left;
+  }
+  
+  .summary-table th {
+    background-color: #2a6;
+    text-align: center;
+    color: #000;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+  }
+  
+  .summary-table tbody tr:nth-child(odd) {
+    background-color: #252525;
+  }
+  
+  .summary-table tbody tr:nth-child(even) {
+    background-color: #2a2a2a;
+  }
+  
+  .hours-cell {
+    text-align: center;
+    font-weight: 600;
+  }
+  
+  .total-label {
+    text-align: right;
+    font-weight: bold;
+    color: #2a6;
+    background-color: #222;
+  }
+  
+  .total-hours {
+    text-align: center;
+    font-weight: bold;
+    color: #2a6;
+    background-color: #222;
+    font-size: 18px;
+  }
+  
+  .remaining-hours {
+    margin: 25px 0;
+    font-size: 20px;
+    background-color: #252525;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  .proposed-grade {
+    text-align: right;
+    margin: 35px 0;
+    font-size: 20px;
+    background-color: #252525;
+    padding: 15px;
+    border-radius: 8px;
+  }
+  
+  #podsumowanie-view p {
+    margin-bottom: 15px;
+    line-height: 1.7;
+  }
+  
+  /* Ulepszone style dla formularza Metryczka */
+  .enhanced-form {
+    background-color: #222;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .student-info-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .form-section {
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #252525;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .section-title {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #2a6;
+    font-size: 18px;
+    border-bottom: 1px solid #444;
+    padding-bottom: 10px;
+  }
+  
+  .enhanced-fieldset {
+    background-color: #252525;
+    border: 1px solid #444;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .date-input-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .date-input-container input {
+    flex: 1;
+  }
+  
+  .date-input-container .calendar-icon {
+    margin-left: 10px;
+    cursor: pointer;
+    color: #2ad;
+  }
+  
+  .full-width {
+    width: 100% !important;
+    max-width: 500px;
+  }
+  
+  .primary-btn {
+    background: linear-gradient(to right, #2a6, #3b7);
+    padding: 12px 30px;
+    font-size: 16px;
+    box-shadow: 0 4px 10px rgba(42, 102, 6, 0.3);
+  }
+  
+  .primary-btn:hover {
+    background: linear-gradient(to right, #3b7, #4c8);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(42, 102, 6, 0.4);
+  }
+  
+  .secondary-btn {
+    background: #444;
+    color: #fff;
+    border: 1px solid #555;
+  }
+  
+  .secondary-btn:hover {
+    background: #555;
+    border-color: #666;
+  }
+  
+  .summary-card {
+    background-color: #252525;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border-left: 4px solid #2a6;
+    text-align: left;
+  }
+  
+  .summary-card p {
+    margin-bottom: 15px;
+    font-size: 16px;
+  }
+  
+  .summary-card .label {
+    color: #aaa;
+    font-weight: 500;
+  }
+  
+  .summary-card .value {
+    color: #2a6;
+    font-weight: 600;
+    font-size: 17px;
+  }
+  
+  /* Poprawki dla responsywności */
+  @media (max-width: 768px) {
+    .form-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .form-group label {
+      width: 100%;
+      text-align: left;
+      margin-bottom: 5px;
+    }
+  
+    .form-group.center label {
+      width: 100%;
+      text-align: left;
+    }
+  
+    .form-group input[type="text"],
+    .form-group.center input {
+      width: 100%;
+    }
+  
+    .radio-group {
+      flex-direction: column;
+      gap: 15px;
+    }
+  
+    .temat-row {
+      flex-direction: column;
+    }
+  
+    .temat-godziny {
+      width: 100%;
+      text-align: left;
+      margin-top: 8px;
+    }
+  
+    .form-group label {
+      width: 120px;
+      font-size: 14px;
+    }
+  
+    input[type="text"],
+    select {
+      width: 100%;
+    }
+  
+    .container {
+      padding: 20px;
+    }
+  
+    fieldset {
+      padding: 15px;
+    }
+  
+    .content-box {
+      padding: 20px;
+    }
+  }
+  
+  /* Poprawki dla fieldset */
+  fieldset.enhanced-fieldset {
+    width: 100%;
+    margin: 30px 0;
+    padding: 25px;
+  }
+  
