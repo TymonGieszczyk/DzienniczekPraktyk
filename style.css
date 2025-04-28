@@ -90,7 +90,6 @@
     box-shadow: 0 2px 10px rgba(42, 102, 6, 0.1);
   }
   
-  /* Poprawki dla formularza Metryczka */
   .form-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -142,7 +141,6 @@
     width: 100%;
   }
   
-  /* Poprawka dla pola "Odbytej w" */
   .form-group.center {
     justify-content: flex-start;
     margin: 25px 0;
@@ -494,7 +492,6 @@
     font-size: 14px;
   }
   
-  /* Styles for Summary Table */
   .summary-table {
     width: 100%;
     border-collapse: collapse;
@@ -573,7 +570,6 @@
     line-height: 1.7;
   }
   
-  /* Ulepszone style dla formularza Metryczka */
   .enhanced-form {
     background-color: #222;
     border-radius: 10px;
@@ -679,7 +675,6 @@
     font-size: 17px;
   }
   
-  /* Poprawki dla responsywności */
   @media (max-width: 768px) {
     .form-grid {
       grid-template-columns: 1fr;
@@ -739,10 +734,8 @@
     }
   }
   
-  /* Poprawki dla fieldset */
   fieldset.enhanced-fieldset {
     width: 100%;
     margin: 30px 0;
     padding: 25px;
   }
-  
