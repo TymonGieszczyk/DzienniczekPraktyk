@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Elementy DOM
     const views = {
       metryka: document.getElementById("metryczka-view"),
       dziennik: document.getElementById("dziennik-view"),
@@ -34,7 +33,6 @@ document.addEventListener("DOMContentLoaded", () => {
       zrealizowaneTematy: document.getElementById("zrealizowane-tematy"),
     }
   
-    // Dane aplikacji
     const tematy = {
       "Moduł wstępny": [
         "Czynności wstępne i szkolenia, struktura i organizacja pracy informatyków",
@@ -80,14 +78,12 @@ document.addEventListener("DOMContentLoaded", () => {
     let godzinyPozostalo = 140
     let godzinyTematy = {}
   
-    // Inicjalizacja godzin tematów
     Object.keys(tematy).forEach((dzial) => {
       tematy[dzial].forEach((temat) => {
         godzinyTematy[temat] = 0
       })
     })
   
-    // Funkcje pomocnicze
     const storage = {
       save: () => {
         localStorage.setItem("studentData", JSON.stringify(studentData))
@@ -116,7 +112,6 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     }
   
-    // Aktualizacja UI
     function updateTematyHours() {
       document.querySelectorAll(".temat-row").forEach((row) => {
         const nazwa = row.querySelector(".temat-nazwa").textContent
@@ -194,7 +189,6 @@ document.addEventListener("DOMContentLoaded", () => {
       if (elements.zrealizowaneTematy) elements.zrealizowaneTematy.innerHTML = ""
     }
   
-    // Obsługa zdarzeń
     elements.dzialSelect.addEventListener("change", function () {
       const selectedDzial = this.value
       elements.tematSelect.innerHTML = ""
@@ -311,25 +305,20 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("dataZakonczenia").value = studentData.dataZakonczenia || ""
     })
   
-    // Obsługa zakładek
     function switchTab(tabName) {
-      // Ukryj wszystkie widoki
       Object.values(views).forEach((view) => {
         if (view && view !== views.form && view !== views.summary) {
           view.style.display = "none"
         }
       })
   
-      // Usuń klasę active ze wszystkich zakładek
       Object.values(tabs).forEach((tab) => {
         if (tab) tab.classList.remove("active")
       })
   
-      // Pokaż wybrany widok i aktywuj zakładkę
       if (views[tabName]) views[tabName].style.display = "block"
       if (tabs[tabName]) tabs[tabName].classList.add("active")
   
-      // Dodatkowe akcje dla konkretnych zakładek
       if (tabName === "podsumowanie") {
         updateSummary()
       }
@@ -339,7 +328,6 @@ document.addEventListener("DOMContentLoaded", () => {
     tabs.dziennik.addEventListener("click", () => switchTab("dziennik"))
     tabs.podsumowanie.addEventListener("click", () => switchTab("podsumowanie"))
   
-    // Inicjalizacja
     storage.load()
     clearExistingTopics()
     updateTematyHours()
